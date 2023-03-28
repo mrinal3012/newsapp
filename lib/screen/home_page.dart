@@ -4,20 +4,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:newsapp/model/news_model.dart';
+import 'package:newsapp/provider/news_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
  // const HomePage({Key? key}) : super(key: key);
-  String url="https://newsapi.org/v2/everything?q=bangladesh&page=1&pageSize=5&apiKey=ccdb5fd8b4744dacb1416e93f8c8cf7d";
-  NewsModel? newsModel;
-  Future<NewsModel>fetchHomeData()async{
-    var responce= await http.get(Uri.parse(url));
-    var data =jsonDecode(responce.body);
-    newsModel=NewsModel.fromJson(data);
-    return newsModel!;
-  }
+
 
   @override
   Widget build(BuildContext context) {
+
+    var newsPorvider = Provider.of<NewsProvider>(context);
     return Scaffold(
       appBar: AppBar(title: Text("News Paper"),),
       body: Container(
@@ -26,7 +23,7 @@ class HomePage extends StatelessWidget {
         child:ListView(children: [
           
           FutureBuilder<NewsModel>(
-              future: fetchHomeData(),
+              future: newsPorvider.getHomeData(),
               builder: (context, snapshot) {
                 if(snapshot.connectionState==ConnectionState.waiting){
                   return Center(child: CircularProgressIndicator(),

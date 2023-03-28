@@ -7,9 +7,9 @@ class NewsProvider with ChangeNotifier{
 
   NewsModel? newsModel;
 
-  Future<NewsModel> getHomeData()async{
+  Future<NewsModel> getHomeData(int pageNo,String sorted)async{
 
-    newsModel=await CustomHttp.fetchHomeData();
+    newsModel=await CustomHttp.fetchHomeData(pageNo,sorted);
 
     return newsModel!;
 }

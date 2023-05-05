@@ -140,8 +140,7 @@ class _HomePageState extends State<HomePage> {
                                       Expanded(
                                         flex: 2,
                                         child: CachedNetworkImage(
-                                          imageUrl:
-                                              "${snapshot.data!.articles![index].urlToImage}",
+                                          imageUrl: "${snapshot.data!.articles![index].urlToImage}",
                                           height: 100,
                                           placeholder: (context, url) =>
                                               CircularProgressIndicator(),

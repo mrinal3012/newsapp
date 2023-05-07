@@ -23,7 +23,8 @@ class DetailsPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
+      body:
+      Padding(
         padding: const EdgeInsets.only(left: 20,right: 20),
         child: ListView(
           children: [
